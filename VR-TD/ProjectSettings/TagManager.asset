@@ -7,9 +7,6 @@ TagManager:
   - Enemy
   - Base
   - Terrain
-  - FireBall
-  - Score
-  - HighScore
   layers:
   - Default
   - TransparentFX
