@@ -13,6 +13,15 @@ public class Health : MonoBehaviour
         UpdateHealthBar();
     }
 
+    private void Update()
+    {
+        if (transform.Find("TB_Soldier_Mage") == null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     private void UpdateHealthBar()
     {
         if (healthbarFill != null)
@@ -27,11 +36,11 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
     }
-    
-    // public void RestoreHealth(float amount)
-    // {
-    //     currentHealth += amount;
-    //     currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-    //     UpdateHealthBar();
-    // }
+
+    public void RestoreHealth(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthBar();
+    }
 }

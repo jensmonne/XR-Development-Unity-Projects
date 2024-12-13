@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AR_Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VR_Scene.unity
     guid: 1261e77bc889047c68d8c2d45f289426
   - enabled: 0
     path: Assets/Scenes/AR_Scene extra's.unity
     guid: 6feb0462d1b86cd4390356d9dfd20d71
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AR_Scene fireball.unity
     guid: 0a270e36a669883479f56a2c01987822
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: e473b2ed18d3b4ba6bccd231d70bf154
   m_configObjects:
