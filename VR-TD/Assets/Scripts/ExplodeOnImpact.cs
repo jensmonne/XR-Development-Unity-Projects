@@ -2,31 +2,21 @@ using UnityEngine;
 
 public class ExplodeOnImpact : MonoBehaviour
 {
-    public float explosionForce = 500f;
-    public float explosionRadius = 5f;
-    public int damageAmount = 100;
+    public float explosionForce = 500f;      // Kracht van de explosie
+    public float explosionRadius = 5f;       // Radius van de explosie
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) // Zorg dat vijanden de tag "Enemy" hebben
         {
             Explode();
-            Damage(collision.gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    private void Damage(GameObject enemy)
-    {
-        Health enemyHealth = enemy.GetComponent<Health>();
-        if (enemyHealth != null)
-        {
-            enemyHealth.TakeDamage(damageAmount);
+            Destroy(gameObject); // Verwijder het object na de explosie
         }
     }
 
     private void Explode()
     {
+        // Vind alle objecten in de buurt van de explosie
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider nearbyObject in colliders)
         {

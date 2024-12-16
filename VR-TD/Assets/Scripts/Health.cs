@@ -26,10 +26,6 @@ public class Health : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
     
     // public void RestoreHealth(float amount)
