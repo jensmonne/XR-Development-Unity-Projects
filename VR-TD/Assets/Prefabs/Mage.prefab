@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1885325038405321464}
   - component: {fileID: 4140261959100649133}
   - component: {fileID: 2236250738399889513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthbarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1344166033408494161}
   - component: {fileID: 688821483177658062}
   - component: {fileID: 7171956144803463486}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,14 +187,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3740863259050101661}
-  - component: {fileID: 1745371460304222248}
   - component: {fileID: 8634063251185808081}
   - component: {fileID: 9190501338923146256}
   - component: {fileID: 4715583151341236084}
   - component: {fileID: 52253701171842845}
   - component: {fileID: 2313742748093004943}
-  m_Layer: 0
-  m_Name: EnemyBase
+  m_Layer: 6
+  m_Name: Mage
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 6280569692207795850}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 14.338426}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -217,28 +216,6 @@ Transform:
   - {fileID: 4170761925450023616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1745371460304222248
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6280569692207795850}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 6
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &8634063251185808081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98248282fc448c04ba8333f6d84ef73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  speed: 3
+  waypointTolerance: 0.1
+  baseObject: {fileID: 0}
 --- !u!114 &9190501338923146256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8621069fb5bb329478cf37e5d8214776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
-  attackCooldown: 2
+  damageAmount: 25
 --- !u!136 &52253701171842845
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -300,9 +280,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.8616533
-  m_Height: 4.6828876
+  m_Height: 3.9694586
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5669615, z: -0.02333355}
+  m_Center: {x: 0, y: 2, z: -0.02333355}
 --- !u!54 &2313742748093004943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -328,7 +308,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &6662064600021305719
 GameObject:
@@ -341,7 +321,7 @@ GameObject:
   - component: {fileID: 1888794913734646606}
   - component: {fileID: 107852352649934925}
   - component: {fileID: 556964928424475316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthbarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,8 +398,16 @@ PrefabInstance:
       value: TB_Soldier_Mage
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f3e3a05cf47384587be645cd972fcc2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f3e3a05cf47384587be645cd972fcc2a, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f3e3a05cf47384587be645cd972fcc2a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3e3a05cf47384587be645cd972fcc2a, type: 3}
       propertyPath: m_LocalPosition.x

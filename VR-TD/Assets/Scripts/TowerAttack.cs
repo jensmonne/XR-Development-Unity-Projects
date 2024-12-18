@@ -47,8 +47,6 @@ public class TowerAttack : MonoBehaviour
                 }
             } else
             {
-                // Als de enemy dood gegaan is in range van de toren, verwijder hem dan uit de lijst
-                // We passen de lijst nu aan en eindigen de loop
                 enemiesInRange.Remove(enemy);
                 closestEnemy = null;
                 return closestEnemy;

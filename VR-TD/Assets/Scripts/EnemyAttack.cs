@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float damageAmount = 10f;
-    public float attackCooldown = 2f;
+    public float damageAmount = 25f;
+    private float attackCooldown = 2f;
     private float lastAttackTime;
 
     private Health baseHealth;
@@ -30,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
         {
             baseHealth.TakeDamage(damageAmount);
             lastAttackTime = Time.time;
-            Debug.Log(this.name + "attacked the base!");
+            Destroy(gameObject);
         }
     }
 }
