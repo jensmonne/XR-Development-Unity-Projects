@@ -4,62 +4,72 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // Tracks whether the game is currently active
     private bool gameActive = true;
+
+    // Tracks the player's score
     private int score = 0;
-    private float scoreTimer = 0f; // Timer om score te verhogen
-	
-    // UI om de score te laten zien
+
+    // Timer to increment score over time
+    private float scoreTimer = 0f;
+
+    // UI element to display the score
     [SerializeField] private TextMeshProUGUI scoreText;
-	
-    // UI die getoond wordt bij game over
+
+    // UI panel to display when the game is over
     [SerializeField] private GameObject gameOverUI;
 
     private void Start()
     {
-	    scoreText.text = "Score: " + score;
+        // Initialize the score display
+        scoreText.text = "Score: " + score;
     }
-    
-    void Update()
-    {
-	    if (gameActive)
-	    {
-		    //Time.deltaTime geeft aantal seconden sinds laatste Update
-		    scoreTimer += Time.deltaTime;
 
-		    if (scoreTimer >= 1f) // Verhoog de score elke seconde
-		    {
-			    score++;
-			    scoreText.text = "Score: " + score;
-			    scoreTimer = 0f; // Reset de timer
-		    }
-	    }
+    private void Update()
+    {
+        // If the game is active, update the score over time
+        if (gameActive)
+        {
+            // Increment the timer by the time elapsed since the last frame
+            scoreTimer += Time.deltaTime;
+
+            // If one second has passed, increment the score
+            if (scoreTimer >= 1f)
+            {
+                score++;
+                scoreText.text = "Score: " + score;
+                scoreTimer = 0f; // Reset the timer
+            }
+        }
     }
-    
+
+    // Called when the game is over
     public void GameOver()
     {
-	    gameActive = false;
+        // Stop the game
+        gameActive = false;
 
-	    // Vind alle vijanden in de scene
-	    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-	    //Loop door alle gevonden vijanden en vernietig ze
-	    foreach (GameObject enemy in enemies)
-	    {
-		    Destroy(enemy);
-	    }
+        // Destroy all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
 
-	    // Doe hetzelfde met de spawners
-	    GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
-	    foreach (GameObject spawner in spawners)
-	    {
-		    Destroy(spawner);
-	    }
+        // Destroy all spawners
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (GameObject spawner in spawners)
+        {
+            Destroy(spawner);
+        }
 
-	    // Toon de Game Over UI
-	    gameOverUI.SetActive(true);
+        // Display the Game Over UI
+        gameOverUI.SetActive(true);
     }
-    
+
+    // Restart the current scene to reset the game
     public void RestartGame()
     {
-	    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

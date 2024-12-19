@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - Waypoint
   - ArcherTower
+  - MageTower
   layers:
   - Default
   - TransparentFX
